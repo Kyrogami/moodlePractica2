@@ -1,0 +1,108 @@
+.cabecera {
+    background-color: #000000;
+    display: flex;
+    justify-content: space-between end;
+    width: 100%;
+    height: 100px;
+}
+
+.foto {
+    color: white;
+    display: flex;
+    justify-content: center;
+    width: 85%;
+}
+
+.tituloname{display: flex;
+justify-content: center;
+align-items: center;}
+
+.secNotas {
+    background-color: #30c877;
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    padding: auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
+
+}
+
+.secInfo {
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    padding: auto;
+    margin-top: 2%;
+}
+
+footer {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+}
+
+.home {
+    width: 100px;
+
+}
+
+nav{
+	max-width: 900px;
+	background-color: #333;
+	font-size: 20px;
+	margin-top: 50px;
+}
+.menu-horizontal{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+}
+.menu-horizontal > li > a{
+	display: block;
+	padding: 15px 20px;
+	color: white;
+	text-decoration: none;
+}
+.menu-horizontal > li:hover{
+	background-color: red;
+}
+.menu-vertical{
+	position: absolute;
+	display: none;
+	list-style: none;
+	width: 200px;
+	background-color: rgba(0, 0, 0, .5);
+}
+.menu-horizontal li:hover .menu-vertical{
+	display: block;
+}
+.menu-vertical li:hover{
+	background-color: black;
+}
+
+.menu-vertical li a{
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 15px 15px 15px 20px;
+}
+
+
+.cuadradito{
+    width: 200px;
+    height: 200px;
+}
+
+.notas{background-color: yellow;}
+
+.asig{background-color: violet  ;}
+
