@@ -1,16 +1,22 @@
 .cabecera {
     background-color: #000000;
     display: flex;
-    justify-content: space-between end;
+    justify-content: space-between;
     width: 100%;
     height: 100px;
 }
 
+body{background-color: #bdb8ad;}
+
+.tituloname{color: white;
+display: flex;
+justify-content: center;
+align-items: center;}
+
 .foto {
-    color: white;
-    display: flex;
-    justify-content: center;
-    width: 85%;
+    color: white;   
+    display:flex;
+    align-items: center;
 }
 
 .tituloname{display: flex;
@@ -18,11 +24,11 @@ justify-content: center;
 align-items: center;}
 
 .secNotas {
-    background-color: #30c877;
+    background-color: #c6d4e1;
     display: flex;
     justify-content: center;
-    width: 800px;
-    height: 500px;
+    width: 500px;
+    height: 100px;
     margin: auto;
     padding: auto;
     margin-bottom: 2%;
@@ -30,15 +36,21 @@ align-items: center;}
 
 }
 
+.asignaturas{background-color: #44749d;
+color: white;}
+
+.datos{background-color: #c6d4e1;}
+
 .secInfo {
-    background-color: aqua;
+    background-color: c6d4e1;
     display: flex;
     justify-content: center;
-    width: 800px;
-    height: 500px;
+    width: 500px;
+    height: 100px;
     margin: auto;
     padding: auto;
     margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 footer {
@@ -60,6 +72,10 @@ nav{
 	background-color: #333;
 	font-size: 20px;
 	margin-top: 50px;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 50px;
+    
 }
 .menu-horizontal{
 	list-style: none;
@@ -87,6 +103,7 @@ nav{
 }
 .menu-vertical li:hover{
 	background-color: black;
+
 }
 
 .menu-vertical li a{
@@ -95,7 +112,6 @@ nav{
 	text-decoration: none;
 	padding: 15px 15px 15px 20px;
 }
-
 
 .cuadradito{
     width: 200px;
