@@ -31,7 +31,7 @@ usuariosArray.push(alumnoJose.toArray());
 usuariosArray.push(alumnoPedro.toArray());
 
 // Convertimos los objetos usuario a JSON
-let alumnoAdrianJson = JSON.stringify(alumnoAdrian);
+let alumnoAdrianJSON = JSON.stringify(alumnoAdrian);
 let alumnoJoseJson = JSON.stringify(alumnoJose);
 let alumnoPedroJson = JSON.stringify(alumnoPedro);
 
