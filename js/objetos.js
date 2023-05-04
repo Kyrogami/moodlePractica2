@@ -42,9 +42,8 @@ console.log("Tipo de usuario: " + usuariosArray[contador].tipo_usuario);
 console.log("Activo: " + usuariosArray[contador].activo);
 }
 
-
+//muestro por pantalla datos.
 console.log(usuariosArray);
-
 
 //Vamos a crear infoAlumno pasandole (alumno) como una variable para renombrar
 class infoalumno {
