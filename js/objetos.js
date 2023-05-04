@@ -12,6 +12,8 @@ class usuario {
       this.tipo_usuario = tipo_usuario;
       this.activo = activo;
     }
+  // Creo una funcion
+    toArray(){return Object.values(this)}
   }
 
 //creo unos objetos usuarios de alumnos 
@@ -22,28 +24,50 @@ let alumnoPedro = new usuario(3, "Pedro", "Rodríguez", "peporro", "1234", "foto
 //creo mi array 
 let usuariosArray =[];
 
-//introducimos al array
-usuariosArray.push(alumnoAdrian);
-usuariosArray.push(alumnoJose);
-usuariosArray.push(alumnoPedro);
+//introducimos al array la función con los valores agregando la funcion to array 
+//el cual devuelve los valores del constuctor
+usuariosArray.push(alumnoAdrian.toArray());
+usuariosArray.push(alumnoJose.toArray());
+usuariosArray.push(alumnoPedro.toArray());
 
-//voy a crear un bucle para un array
-//creo un bucle; creo mi variable contador = 0; establezco condición 
-for (let contador = 0; contador < usuariosArray.length;  contador++){
-console.log("ID: " + usuariosArray[contador].id);
-console.log("Nombre: " + usuariosArray[contador].nombre);
-console.log("Apellidos: " + usuariosArray[contador].apellidos);
-console.log("Usuario: " + usuariosArray[contador].usuario);
-console.log("Contraseña: " + usuariosArray[contador].contraseña);
-console.log("Foto: " + usuariosArray[contador].foto);
-console.log("Dirección: " + usuariosArray[contador].direccion);
-console.log("Teléfono: " + usuariosArray[contador].telefono);
-console.log("Tipo de usuario: " + usuariosArray[contador].tipo_usuario);
-console.log("Activo: " + usuariosArray[contador].activo);
+// Convertimos los objetos usuario a JSON
+let alumnoAdrianJson = JSON.stringify(alumnoAdrian);
+let alumnoJoseJson = JSON.stringify(alumnoJose);
+let alumnoPedroJson = JSON.stringify(alumnoPedro);
+
+
+// Imprimimos el array
+console.log(usuariosArray);
+
+//realizo un bucle más sencillo aprovechandome de la funcion to array
+for (let contador = 0; contador < usuariosArray.length; contador++) {
+  console.log(usuariosArray[contador]);
 }
 
-//muestro por pantalla datos.
-console.log(usuariosArray);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Vamos a crear infoAlumno pasandole (alumno) como una variable para renombrar
 class infoalumno {
