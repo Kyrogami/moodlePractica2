@@ -1,3 +1,52 @@
+#formulario {
+    width: 48rem;
+    height: 15rem;
+    border-radius: 20px;
+    overflow: auto;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    height: 50rem;
+    width: 100%;
+}
+
+.cajaboton {
+    background-color: #000000;
+}
+
+.abajo{
+display: flex;}
+.boton {
+    justify-content: center;
+    align-items: center;
+    border-radius: 20%;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    background-color: rgb(26, 22, 2);
+}
+
+
+.imagenfondo {
+    background-image: url(../css/trailblazer.png);
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 60em;
+
+}
+
+
+
+
 .container {
     display: flex;
 }
@@ -11,6 +60,15 @@
     top: 50;
 }
 
+
+#titulo {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
 body {
     background-color: #ebe7e0;
 }
@@ -18,7 +76,6 @@ body {
 .a {
     display: flex;
 }
-
 
 .imagenfondo {
     background-image: url(../css/trailblazer.png);
@@ -107,18 +164,6 @@ nav {
     align-items: center;
     border: #000000;
     border-width: medium;
-
-}
-
-.secInfo {
-    background-color: c6d4e1;
-    display: flex;
-    justify-content: center;
-    width: 25rem;
-    height: 10rem;
-    margin: 5rem;
-    padding: auto;
-    align-items: center;
 
 }
 
@@ -226,4 +271,4 @@ footer {
         position: absolute;
         left: 0;
     }
-    }
+}

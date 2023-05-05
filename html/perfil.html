@@ -6,48 +6,122 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Moodle.com</title>
+    <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="formulario.css">
-
+    <link rel="stylesheet" href="perfil.css">
 </head>
 
 <body>
-    <div id="container">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-        <header class="cabecera">
-            
+    <script src="" async defer></script>
+</body>
+
+<header class="cabecera">
+    <!-- MENU DESPLEGABLE -->
 
 
-            <!-- MENU DESPLEGABLE -->
-            <nav>
-                <ul class="menu-horizontal">
-                    <li>
-                        <a href="#">Menu</a>
-                        <ul class="menu-vertical">
-                            <li><a href="#">Notas</a></li>
-                            <li><a href="#">Cursos</a></li>
-                            <li><a href="#">To Do</a></li>
-                            <li><a href="#">Opciones</a></li>
-                            <li><a href="login.html">Loggin</a></li>
-                            <li><a href="principal.html">Inicio</a></li>
-                            <li><a href="noti.html">Notificaciones</a></li>
-                            <li><a href="back_notas.html">Back Notas</a></li>
-                        </ul>
-                    </li>
-        
+    <nav>
+        <ul class="menu-horizontal">
+            <li class="cajaMenu">
+                <a href="#"><img class="menudes" src="../css/menu.png"></a>
+                <ul class="menu-vertical">
+                    <!--          <li><a href="#">Notas</a></li>
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">To Do</a></li> -->
+                    <li><a href="#">Opciones</a></li>
+                    <li><a href="login.html">Loggin</a></li>
+                    <li><a href="noti.html">Notificaciones</a></li>
+                    <li><a href="back_notas.html">Back Notas</a></li>
                 </ul>
+            </li>
 
-               <!-- <div class="foto"><img width: 50px; height: 50px; src="char.png">-->
+        </ul>
 
-    
-            </nav>
-            <div class="tituloname">MoodleGG</div>
+        <!-- <div class="foto"><img width: 50px; height: 50px; src="char.png">-->
 
-        </header>
+    </nav>
+    <div class="tituloname">AmberGG</div>
+
+    <div class="perfil"><a class="a" href="/html/noti.html"><img class="home"><img class="iconprofile"
+                src="../css/main.png"> </a></div>
+
+</header>
+
+<div class="imagenfondo">
+
+    <section class="section">
+        <form id="formulario" class="container nombre_ciudad"
+            action="https://hook.eu1.make.com/jfybeluserghdighey2oukk9c6mhl7jl" method="post">
+
+            <div class="row">
+                <div class="col mb 1 name">
+                    <label for="formulario.html" class="form-control" for="CountryCode">Tu Nombre:</label>
+                    <input type="text" id="CountryCode" name="CountryCode" placeholder="nombre..." required>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col mb 1 password">
+                        <label for="formulario.html" class="form-control" for="CountryCode">Tu contraseña:</label>
+                        <input type="text" id="CountryCode" name="CountryCode" placeholder="password..."
+                            required>   
+
+                    </div>
+                    <br>
+                    <div class="col mb 1" correo>
+                        <div class="col mb1">
+                            <label for="formulario.html" class="form-control" for="distrito">Tu correo:</label>
+                            <input type="text" id="apellido1" name="District" placeholder="correo..." required>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <div class="abajo">
+                <div class="cajabotones">
+                    <div class="">
+                        <input type="submit" value="Enviar" class="boton">
+                    </div>
+                    <br>
+                    <div class="boton">
+                        <input type="submit" value="Reiniciar" class="boton">
+                    </div>
+                </div>
+        </form>
+
+    </section>
+
+    </body>
+    <footer> 
+        <div class="cajaHome">
+            <button onclick="window.location.href='principal.html'" type="button"
+                class="btn btn-primary btn-lg active homebuttom"><img class="home" src="../css/footer/home.png"></button>
+        </div>
+        <div class="cajaHome">
+            <button onclick="window.location.href='principal.html'" type="button"
+                class="btn btn-primary btn-lg active homebuttom"><img class="home" src="../css/footer/lupa.png"></button>
+        </div>
+        <div class="cajaHome">
+            <button onclick="window.location.href='principal.html'" type="button"
+                class="btn btn-primary btn-lg active homebuttom"><img class="home" src="../css/footer/alert-26.png"></button>
+        </div>
+        <div class="cajaHome">
+            <button onclick="window.location.href='principal.html'" type="button"
+                class="btn btn-primary btn-lg active homebuttom"><img class="home" src="../css/footer//sms.png"></button>
+        </div>
+        </div>
+    </footer>
+
+</html>
