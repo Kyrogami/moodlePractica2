@@ -9,6 +9,8 @@
     flex-wrap: wrap;
 }
 
+h1{color: white;}
+
 .section {
     display: flex;
     align-items: center;
