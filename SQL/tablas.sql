@@ -34,69 +34,185 @@ CREATE TABLE IF NOT EXISTS usuarios(
 
 DROP TABLE IF EXISTS ASIGNATURAS;
 CREATE TABLE IF NOT EXISTS ASIGNATURAS(
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     id_profesor1 int,
     id_profesor2 int,
-    CONSTRAINT fk_profesor1 FOREIGN KEY (profesor1) REFERENCES USUARIOS (id) ON UPDATE CASCADE,
-    CONSTRAINT fk_profesor2 FOREIGN KEY (profesor2) REFERENCES USUARIOS (id) ON UPDATE CASCADE
+    CONSTRAINT fk_profesor1 FOREIGN KEY (id_profesor1) REFERENCES USUARIOS (id) ON UPDATE CASCADE,
+    CONSTRAINT fk_profesor2 FOREIGN KEY (id_profesor2) REFERENCES USUARIOS (id) ON UPDATE CASCADE
 ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
-DROP TABLE IF EXISTS CURSOS;
-CREATE TABLE IF NOT EXISTS CURSOS(
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nombre VARCHAR(255) NOT NULL,
-    id_a1 int,
-    id_a2 int,
-    id_a3 int,
-    id_a4 int,
-    id_a5 int,    
-    id_a6 int,
-    id_a7 int,
-    id_a8 int
+    DROP TABLE IF EXISTS CURSOS;
+    CREATE TABLE IF NOT EXISTS CURSOS(
+        id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+        nombre VARCHAR(255) NOT NULL,
+        id_a1 int,
+        id_a2 int,
+        id_a3 int,
+        id_a4 int,
+        id_a5 int,    
+        id_a6 int,
+        id_a7 int,
+        id_a8 int
 
-) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
+    ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
 
-DROP TABLE IF EXISTS NOTAS;
-CREATE TABLE IF NOT EXISTS NOTAS (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_alumno INT,
-    id_asignatura INT,
-    id_curso INT,
-    nota INT DEFAULT 0,
-    CONSTRAINT fk_usuarios FOREIGN KEY (id_alumno) 
-    REFERENCES USUARIOS(id) ON UPDATE CASCADE,
-    CONSTRAINT fk_asignaturas FOREIGN KEY(id_asignatura)
-    REFERENCES ASIGNATURAS(id) ON UPDATE CASCADE,
-    CONSTRAINT fk_curso FOREIGN KEY(id_curso)
-    REFERENCES CURSOS(id) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+    DROP TABLE IF EXISTS NOTAS;
+    CREATE TABLE IF NOT EXISTS NOTAS (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        id_alumno INT,
+        id_asignatura INT,
+        id_curso INT,
+        nota INT DEFAULT 0,
+        CONSTRAINT fk_usuarios FOREIGN KEY (id_alumno) 
+        REFERENCES USUARIOS(id) ON UPDATE CASCADE,
+        CONSTRAINT fk_asignaturas FOREIGN KEY(id_asignatura)
+        REFERENCES ASIGNATURAS(id) ON UPDATE CASCADE,
+        CONSTRAINT fk_curso FOREIGN KEY(id_curso)
+        REFERENCES CURSOS(id) ON UPDATE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /* AHORA VAMOS A REALIZAR LAS INSERCCIONES DE TIPOS DE USUARIOS Y USUARIOS*/
 INSERT INTO TIPOS_USUARIO(nombre,funciones) VALUES
 ("alumnado","este susodicho especimen denominado como alumno, suele tener la intención de aprobar el curso haciendo el mínimo posible."),
 ("profesorado","este susodicho especimen denominado como profesor, suele tener la intención de suspender a todo el curso haciendo lo máximo posible por ello");
 
-INSERT INTO USUARIOS(dni,nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
 ("José","25448855-F","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
 
-INSERT INTO USUARIOS(dni,nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
 ("Adrián","2538445-S","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
 ("Bruno","1238445-T","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
-("Ana","Gonzalez Pérez","7538445-S","pegope","1234","Calle de la Inquisición",697123963,1,1);
+("Ana","7538445-S","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
 
-INSERT INTO USUARIOS(dni,nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
 ("María Cristina","1222445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0),
 ("Miguel","1226445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
 ("Juan Carlos","1826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
 ("Victoría","1826945-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0);
-
-INSERT INTO USUARIOS(dni,nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
-("Cristían","2826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("Cristían","2824445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Suplentin","2826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
 ("Jorge","4826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,2,1);
 
+/* comprobación  SI NECESITAS BORRAR DELETE FROM USUARIOS*/
 
-/* INSERT CURSOS */
+DESCRIBE USUARIOS;
+SELECT * FROM USUARIOS;
 
-INSERT INTO  CURSOS(nombre,id_a1,id_a2,id_a3,id_a4,id_a5,id_a6,id_a7,id_a8,) VALUES
+/* INSERT ASIGNATURAS Y CURSOS PARA BORRAR -> DELETE FROM ASIGNATURAS; */
+
+INSERT INTO ASIGNATURAS(nombre,id_profesor1,id_profesor2) VALUES
+("CSS",11,10),
+("PHP",11,10),
+("JAVA",11,10),
+
+("JS",11,10),
+("HTML5",11,10),
+("TYPESCRIPT",11,10);
+INSERT INTO ASIGNATURAS(nombre,id_profesor2) VALUES
+("PYTHON",10),
+("SQL-SERVER",10);
+INSERT INTO ASIGNATURAS(nombre,id_profesor2) VALUES
+("INGLÉS TÉCNICO",10),
+("EMPLEABILIDAD",10);
+
+/* consulta asignaturas */
+
+SELECT * FROM ASIGNATURAS;
+
+INSERT INTO  CURSOS(nombre,id_a1,id_a2,id_a3,id_a4,id_a5,id_a6,id_a7,id_a8) VALUES
+("FULL-STACK",1,2,3,4,5,6,9,10);
+INSERT INTO  CURSOS(nombre,id_a1,id_a2,id_a3) VALUES
+("PROGRAMACIÓN BACK-END",3,7,8);
+
+/* CONSULTA ASIGNATURAS */
+
+SELECT * FROM CURSOS;
+
+
+/* INSERT NOTAS */ 
+
+INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
+(1,1,1,10),
+(1,2,1,10),
+(1,3,1,10),
+(1,4,1,10),
+(1,5,1,10),
+(1,6,1,10),
+(1,7,1,10),
+(1,8,1,10);
+
+INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
+(2,1,1,10),
+(2,2,1,10),
+(2,3,1,10),
+(2,4,1,10),
+(2,5,1,10),
+(2,6,1,10),
+(2,7,1,10),
+(2,8,1,10);
+
+
+INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
+(3,1,1,7),
+(3,2,1,7),
+(3,3,1,7),
+(3,4,1,7),
+(3,5,1,7),
+(3,6,1,7),
+(3,7,1,7),
+(3,8,1,7);
+
+INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
+(4,1,1,6),
+(4,2,1,6),
+(4,3,1,6),
+(4,4,1,6),
+(4,5,1,6),
+(4,6,1,6),
+(4,7,1,6),
+(4,8,1,6);
+
+INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
+(6,1,1,9),
+(6,2,1,9),
+(6,3,1,9),
+(6,4,1,9),
+(6,5,1,9),
+(6,6,1,9),
+(6,7,1,9),
+(6,8,1,9);
+
+INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
+(7,1,1,9),
+(7,2,1,9),
+(7,3,1,9),
+(7,4,1,9),
+(7,5,1,9),
+(7,6,1,9),
+(7,7,1,9),
+(7,8,1,9);
+
+INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
+(9,1,1,8),
+(9,2,1,8),
+(9,3,1,8),
+(9,4,1,8),
+(9,5,1,8),
+(9,6,1,8),
+(9,7,1,8),
+(9,8,1,8);
+
+
+
+
+
+/* TODOS LOS INSERT */
+
+SELECT * FROM USUARIOS;
+SELECT * FROM ASIGNATURAS;
+SELECT * FROM NOTAS;
+SELECT * FROM CURSOS;
+SELECT * FROM TIPOS_USUARIO;
