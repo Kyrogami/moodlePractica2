@@ -235,12 +235,13 @@ DESCRIBE TIPOS_USUARIO;
 
 /* CONSULTA QUE UN ALUMNO VEA SU CURSO,ASIGNATURA Y NOTA */
 
-SELECT USUARIOS.nombre,ASIGNATURAS.nombre
-FROM USUARIOS.id=ASIGNATURAS.id_profesor;
-
 
 SELECT CURSOS.nombre
 FROM CURSOS;
+
+SELECT USUARIOS.nombre,ASIGNATURAS.nombre
+FROM USUARIOS.id=ASIGNATURAS.id_profesor;
+
 
 
 /* CONSULTA QUE MUESTRA nombre de curso y nombre de asignaturas */
@@ -271,7 +272,7 @@ GROUP BY ASIGNATURAS.nombre;
 
 DROP VIEW IF EXISTS infoAlumno;
 CREATE VIEW IF NOT EXISTS infoAlumno AS
-SELECT CURSOS.nombre AS 'Curso-2023',ASIGNATURAS.nombre AS 'Asignaturas', NOTAS.nota 
+SELECT CURSOS.nombre AS 'Curso-2023',ASIGNATURAS.nombre AS Asignaturas, NOTAS.nota 
 FROM ASIGNATURAS,NOTAS,CURSOS
 WHERE notas.id_asignatura = asignaturas.id AND CURSOS.id=NOTAS.id_curso
 GROUP BY ASIGNATURAS.nombre
@@ -299,7 +300,7 @@ GROUP BY ASIGNATURAS.nombre;
 
 
 
-
+/* FIN DEL CÓDIGO*/
 
 
 
