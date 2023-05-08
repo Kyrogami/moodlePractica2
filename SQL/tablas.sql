@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS TIPOS_USUARIO(
     funciones VARCHAR(300) NOT NULL
 ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
+/* creamos usuarios*/
 DROP TABLE IF EXISTS USUARIOS;
 CREATE TABLE IF NOT EXISTS usuarios(
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -32,6 +33,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
     FOREIGN KEY (tipo_usuario) REFERENCES tipos_usuario (id) ON UPDATE CASCADE
 ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
+/*creamos asignaturas*/
 DROP TABLE IF EXISTS ASIGNATURAS;
 CREATE TABLE IF NOT EXISTS ASIGNATURAS(
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -42,6 +44,7 @@ CREATE TABLE IF NOT EXISTS ASIGNATURAS(
     CONSTRAINT fk_profesor2 FOREIGN KEY (id_profesor2) REFERENCES USUARIOS (id) ON UPDATE CASCADE
 ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
+/* creamos cursos*/
     DROP TABLE IF EXISTS CURSOS;
     CREATE TABLE IF NOT EXISTS CURSOS(
         id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -82,7 +85,7 @@ CREATE TABLE IF NOT EXISTS ASIGNATURAS(
 
 /* AHORA VAMOS A REALIZAR LAS INSERCCIONES DE TIPOS DE USUARIOS Y USUARIOS*/
 
-DELETE FROM USUARIOS
+DELETE FROM USUARIOS;
 
 INSERT INTO TIPOS_USUARIO(nombre,funciones) VALUES
 ("alumnado","este susodicho especimen denominado como alumno, suele tener la intención de aprobar el curso haciendo el mínimo posible."),
@@ -108,10 +111,7 @@ INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono
 
 /* comprobación  SI NECESITAS BORRAR DELETE FROM USUARIOS*/
 
-DELETE FROM ASIGNATURAS
-
-DESCRIBE USUARIOS;
-SELECT * FROM USUARIOS;
+DELETE FROM ASIGNATURAS;
 
 /* INSERT ASIGNATURAS Y CURSOS PARA BORRAR -> DELETE FROM ASIGNATURAS; */
 
@@ -132,7 +132,7 @@ INSERT INTO ASIGNATURAS(nombre,id_profesor2) VALUES
 
 /* consulta asignaturas */
 
-SELECT * FROM ASIGNATURAS;
+SELECT * FROM CURSOS;
 
 INSERT INTO  CURSOS(nombre,id_a1,id_a2,id_a3,id_a4,id_a5,id_a6,id_a7,id_a8) VALUES
 ("FULL-STACK",1,2,3,4,5,6,9,10);
@@ -141,10 +141,7 @@ INSERT INTO  CURSOS(nombre,id_a1,id_a2,id_a3) VALUES
 
 /* CONSULTA ASIGNATURAS */
 
-DELETE FROM CURSOS;
-
-SELECT * FROM CURSOS;
-
+DELETE FROM NOTAS;
 
 /* INSERT NOTAS */ 
 
@@ -168,7 +165,6 @@ INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
 (2,7,1,10),
 (2,8,1,10);
 
-DELETE FROM NOTAS;
 
 INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
 (3,1,1,7),
@@ -220,8 +216,6 @@ INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
 (9,7,1,8),
 (9,8,1,8);
 
-
-
 /* TODOS LOS INSERT */
 
 SELECT * FROM USUARIOS;
@@ -237,3 +231,92 @@ DESCRIBE ASIGNATURAS;
 DESCRIBE NOTAS;
 DESCRIBE CURSOS;
 DESCRIBE TIPOS_USUARIO;
+
+
+/* CONSULTA QUE UN ALUMNO VEA SU CURSO,ASIGNATURA Y NOTA */
+
+SELECT USUARIOS.nombre,ASIGNATURAS.nombre
+FROM USUARIOS.id=ASIGNATURAS.id_profesor;
+
+
+SELECT CURSOS.nombre
+FROM CURSOS;
+
+
+/* CONSULTA QUE MUESTRA nombre de curso y nombre de asignaturas */
+
+SELECT CURSOS.nombre AS 'Curso 2023',CURSOS.id_a1,ASIGNATURAS.nombre 'Asignaturas'
+FROM CURSOS, ASIGNATURAS, USUARIOS
+WHERE ASIGNATURAS.id = CURSOS.id AND CURSOS.nombre LIKE 'FUL%';
+
+SELECT CURSOS.nombre AS 'Curso 2023',CURSOS.id_a1,ASIGNATURAS.nombre 'Asignaturas'
+FROM CURSOS, ASIGNATURAS, USUARIOS
+WHERE ASIGNATURAS.id = CURSOS.id AND CURSOS.nombre LIKE 'FUL%' AND ASIGNATURAS.nombre LIKE 'JS';
+
+SELECT COUNT(Cursos.nombre)
+FROM CURSOS;
+
+SELECT COUNT(ASIGNATURAS.nombre)
+FROM ASIGNATURAS;
+
+/* CONSULTA ASIG NOMBRES Y NOTAS */
+
+SELECT ASIGNATURAS.nombre, NOTAS.nota
+FROM ASIGNATURAS,NOTAS
+WHERE notas.id_asignatura = asignaturas.id
+GROUP BY ASIGNATURAS.nombre;
+
+
+/* CONSULTA CURSOS NOMBRE ASIGNATURA NOMBRE y NOTAS.nota*/
+
+DROP VIEW IF EXISTS infoAlumno;
+CREATE VIEW IF NOT EXISTS infoAlumno AS
+SELECT CURSOS.nombre AS 'Curso-2023',ASIGNATURAS.nombre AS 'Asignaturas', NOTAS.nota 
+FROM ASIGNATURAS,NOTAS,CURSOS
+WHERE notas.id_asignatura = asignaturas.id AND CURSOS.id=NOTAS.id_curso
+GROUP BY ASIGNATURAS.nombre
+;
+
+/* consulta básica */
+SELECT usuarios.nombre as Alumno
+FROM USUARIOS;
+
+
+DROP VIEW IF EXISTS infoAlumno;
+
+CREATE VIEW IF NOT EXISTS infoAlumno AS
+SELECT USUARIOS.nombre as Alumno,ASIGNATURAS.nombre AS Asignaturas,NOTAS.nota
+FROM USUARIOS,ASIGNATURAS,CURSOS,NOTAS
+WHERE notas.id_asignatura = asignaturas.id AND CURSOS.id=NOTAS.id_curso
+GROUP BY ASIGNATURAS.nombre;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT CURSOS.nombre AS curso, ASIGNATURAS.nombre AS asignatura, NOTAS.nota
+FROM USUARIOS,
+JOIN CURSOS ON USUARIOS.id = CURSOS.id_alumno
+JOIN ASIGNATURAS ON ASIGNATURAS.id = CURSOS.id_asignatura
+JOIN NOTAS ON NOTAS.id_alumno = USUARIOS.id AND NOTAS.id_asignatura = ASIGNATURAS.id;
+
+
+WHERE USUARIOS.id = 1;
