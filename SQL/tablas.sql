@@ -1,3 +1,12 @@
+DROP DATABASE IF EXISTS FULLSTACK;
+CREATE DATABASE IF NOT EXISTS FULLSTACK DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
+
+/* usamos la base de datos*/
+
+USE FULLSTACK;
+
 /* Creamos primero los tipos de usuario*/
 DROP TABLE IF EXISTS TIPOS_USUARIO;
 CREATE TABLE IF NOT EXISTS TIPOS_USUARIO(
@@ -10,6 +19,7 @@ DROP TABLE IF EXISTS USUARIOS;
 CREATE TABLE IF NOT EXISTS usuarios(
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombre VARCHAR(255) NOT NULL,
+    dni VARCHAR(10) UNIQUE,
     apellidos VARCHAR(255) NOT NULL,
     usuario VARCHAR(20) NOT NULL,
     contraseña VARCHAR(255) NOT NULL,
@@ -27,10 +37,10 @@ CREATE TABLE IF NOT EXISTS ASIGNATURAS(
   id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     id_profesor1 int,
-    id_profesor2 int
- 
+    id_profesor2 int,
+    CONSTRAINT fk_profesor1 FOREIGN KEY (profesor1) REFERENCES USUARIOS (id) ON UPDATE CASCADE,
+    CONSTRAINT fk_profesor2 FOREIGN KEY (profesor2) REFERENCES USUARIOS (id) ON UPDATE CASCADE
 ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
-
 
 DROP TABLE IF EXISTS CURSOS;
 CREATE TABLE IF NOT EXISTS CURSOS(
@@ -68,21 +78,25 @@ INSERT INTO TIPOS_USUARIO(nombre,funciones) VALUES
 ("alumnado","este susodicho especimen denominado como alumno, suele tener la intención de aprobar el curso haciendo el mínimo posible."),
 ("profesorado","este susodicho especimen denominado como profesor, suele tener la intención de suspender a todo el curso haciendo lo máximo posible por ello");
 
-INSERT INTO USUARIOS(nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
-("José","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
+INSERT INTO USUARIOS(dni,nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("José","25448855-F","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
 
-INSERT INTO USUARIOS(nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
-("Adrián","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
-("Bruno","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
-("Ana","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
+INSERT INTO USUARIOS(dni,nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("Adrián","2538445-S","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Bruno","1238445-T","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Ana","Gonzalez Pérez","7538445-S","pegope","1234","Calle de la Inquisición",697123963,1,1);
 
-INSERT INTO USUARIOS(nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
-("María Cristina","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0),
-("Miguel","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
-("Juan Carlos","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
-("Victoría","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0),
+INSERT INTO USUARIOS(dni,nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("María Cristina","1222445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0),
+("Miguel","1226445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Juan Carlos","1826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Victoría","1826945-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0);
 
-INSERT INTO USUARIOS(nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
-("Cristían","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
-("Jorge","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,2,1);
+INSERT INTO USUARIOS(dni,nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("Cristían","2826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Jorge","4826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,2,1);
 
+
+/* INSERT CURSOS */
+
+INSERT INTO  CURSOS(nombre,id_a1,id_a2,id_a3,id_a4,id_a5,id_a6,id_a7,id_a8,) VALUES
