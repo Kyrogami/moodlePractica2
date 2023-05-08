@@ -53,8 +53,15 @@ CREATE TABLE IF NOT EXISTS ASIGNATURAS(
         id_a5 int,    
         id_a6 int,
         id_a7 int,
-        id_a8 int
-
+        id_a8 int,
+        CONSTRAINT fk_id_a1 FOREIGN KEY (id_a1) REFERENCES ASIGNATURAS (id) ON UPDATE CASCADE,
+        CONSTRAINT fk_id_a2 FOREIGN KEY (id_a2) REFERENCES ASIGNATURAS (id) ON UPDATE CASCADE,
+        CONSTRAINT fk_id_a3 FOREIGN KEY (id_a3) REFERENCES ASIGNATURAS (id) ON UPDATE CASCADE,
+        CONSTRAINT fk_id_a4 FOREIGN KEY (id_a4) REFERENCES ASIGNATURAS (id) ON UPDATE CASCADE,
+        CONSTRAINT fk_id_a5 FOREIGN KEY (id_a5) REFERENCES ASIGNATURAS (id) ON UPDATE CASCADE,
+        CONSTRAINT fk_id_a6 FOREIGN KEY (id_a6) REFERENCES ASIGNATURAS (id) ON UPDATE CASCADE,
+        CONSTRAINT fk_id_a7 FOREIGN KEY (id_a7) REFERENCES ASIGNATURAS (id) ON UPDATE CASCADE,
+        CONSTRAINT fk_id_a8 FOREIGN KEY (id_a8) REFERENCES ASIGNATURAS (id) ON UPDATE CASCADE
     ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
 
@@ -74,6 +81,9 @@ CREATE TABLE IF NOT EXISTS ASIGNATURAS(
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /* AHORA VAMOS A REALIZAR LAS INSERCCIONES DE TIPOS DE USUARIOS Y USUARIOS*/
+
+DELETE FROM USUARIOS
+
 INSERT INTO TIPOS_USUARIO(nombre,funciones) VALUES
 ("alumnado","este susodicho especimen denominado como alumno, suele tener la intención de aprobar el curso haciendo el mínimo posible."),
 ("profesorado","este susodicho especimen denominado como profesor, suele tener la intención de suspender a todo el curso haciendo lo máximo posible por ello");
@@ -97,6 +107,8 @@ INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono
 ("Jorge","4826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,2,1);
 
 /* comprobación  SI NECESITAS BORRAR DELETE FROM USUARIOS*/
+
+DELETE FROM ASIGNATURAS
 
 DESCRIBE USUARIOS;
 SELECT * FROM USUARIOS;
@@ -129,6 +141,8 @@ INSERT INTO  CURSOS(nombre,id_a1,id_a2,id_a3) VALUES
 
 /* CONSULTA ASIGNATURAS */
 
+DELETE FROM CURSOS;
+
 SELECT * FROM CURSOS;
 
 
@@ -154,6 +168,7 @@ INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
 (2,7,1,10),
 (2,8,1,10);
 
+DELETE FROM NOTAS;
 
 INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
 (3,1,1,7),
@@ -207,8 +222,6 @@ INSERT INTO NOTAS(id_alumno,id_asignatura,id_curso,nota) VALUES
 
 
 
-
-
 /* TODOS LOS INSERT */
 
 SELECT * FROM USUARIOS;
@@ -216,3 +229,11 @@ SELECT * FROM ASIGNATURAS;
 SELECT * FROM NOTAS;
 SELECT * FROM CURSOS;
 SELECT * FROM TIPOS_USUARIO;
+
+/* todas las estructuras de las tablas */
+
+DESCRIBE usuarios;
+DESCRIBE ASIGNATURAS;
+DESCRIBE NOTAS;
+DESCRIBE CURSOS;
+DESCRIBE TIPOS_USUARIO;
