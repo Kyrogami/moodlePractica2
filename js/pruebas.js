@@ -14,7 +14,7 @@ for (let contador = 0; contador < usuariosArray.length;  contador++){
     }
 // intento para el array en typescript
 let alumno = new Object();
-
+/*
 interface alumno  { 
     name: string;
     apellidos: string;
@@ -62,4 +62,4 @@ interface alumno  {
     tipo_usuario: "alumnos",
     activo: true
   };
-  
+  */
