@@ -63,3 +63,26 @@ CREATE TABLE IF NOT EXISTS NOTAS (
     REFERENCES CURSOS(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+/* AHORA VAMOS A REALIZAR LAS INSERCCIONES DE TIPOS DE USUARIOS Y USUARIOS*/
+INSERT INTO TIPOS_USUARIO(nombre,funciones) VALUES
+("alumnado","este susodicho especimen denominado como alumno, suele tener la intención de aprobar el curso haciendo el mínimo posible."),
+("profesorado","este susodicho especimen denominado como profesor, suele tener la intención de suspender a todo el curso haciendo lo máximo posible por ello");
+
+INSERT INTO USUARIOS(nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("José","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
+
+INSERT INTO USUARIOS(nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("Adrián","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Bruno","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Ana","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
+
+INSERT INTO USUARIOS(nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("María Cristina","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0),
+("Miguel","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Juan Carlos","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
+("Victoría","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0),
+
+INSERT INTO USUARIOS(nombre,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
+("Cristían","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+("Jorge","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,2,1);
+
