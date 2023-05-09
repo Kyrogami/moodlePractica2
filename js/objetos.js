@@ -46,14 +46,6 @@ function crearUsuario(usuario) {
   connection.end();
 }
 
-
-
-
-
-
-
-
-
 //creo mi array 
 let usuariosArray =[];
 

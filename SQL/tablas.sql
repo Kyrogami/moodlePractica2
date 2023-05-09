@@ -284,6 +284,10 @@ GROUP BY ASIGNATURAS.nombre;
 
 /* AHORA TENGO MI DELETE FUNCIONAL
 
+
+select count(usuarios.nombre)
+from usuarios;
+
 DELETE FROM NOTAS WHERE id_alumno = (SELECT Usuarios.id FROM USUARIOS WHERE nombre LIKE 'Jose');
 */
 
