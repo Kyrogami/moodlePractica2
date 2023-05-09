@@ -1,11 +1,11 @@
-DROP DATABASE IF EXISTS FULLSTACK;
-CREATE DATABASE IF NOT EXISTS FULLSTACK DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS FULLSTACKWEB;
+CREATE DATABASE IF NOT EXISTS FULLSTACKWEB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
 /* usamos la base de datos*/
 
-USE FULLSTACK;
+USE FULLSTACKWEB;
 
 /* Creamos primero los tipos de usuario*/
 DROP TABLE IF EXISTS TIPOS_USUARIO;
@@ -33,13 +33,14 @@ CREATE TABLE IF NOT EXISTS usuarios(
 ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
 /*creamos asignaturas*/
+
 DROP TABLE IF EXISTS ASIGNATURAS;
 CREATE TABLE IF NOT EXISTS ASIGNATURAS(
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     id_profesor1 int,
     id_profesor2 int,
-    FOREIGN KEY (id_profesor1) REFERENCES USUARIOS (id)
+    FOREIGN KEY (id_profesor1) REFERENCES USUARIOS (id),
     FOREIGN KEY (id_profesor2) REFERENCES USUARIOS (id) 
 ) ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
 
@@ -75,8 +76,8 @@ CREATE TABLE IF NOT EXISTS ASIGNATURAS(
         id_curso INT,
         nota INT DEFAULT 0,
         FOREIGN KEY (id_alumno) REFERENCES USUARIOS(id),
-        FOREIGN KEY(id_asignatura) REFERENCES ASIGNATURAS(id) ON UPDATE CASCADE,
-        FOREIGN KEY(id_curso) REFERENCES CURSOS(id) ON UPDATE CASCADE
+        FOREIGN KEY(id_asignatura) REFERENCES ASIGNATURAS(id),
+        FOREIGN KEY(id_curso) REFERENCES CURSOS(id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /* AHORA VAMOS A REALIZAR LAS INSERCCIONES DE TIPOS DE USUARIOS Y USUARIOS*/
@@ -283,4 +284,5 @@ select * from View01infoAlumno;
 
 /* FIN DEL CÓDIGO*/
 
-DELETE FROM USUARIOS WHERE USUARIOS.nombre LIKE 'Jose';
+DELETE FROM NOTAS WHERE id_alumno = (SELECT Usuarios.id FROM USUARIOS WHERE nombre LIKE 'Jose');
+
