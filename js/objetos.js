@@ -21,6 +21,39 @@ let alumnoAdrian = new usuario(1, "Adrián", "Sánchez", "adri", "1234", "foto1.
 let alumnoJose = new usuario(2, "Jose", "González", "JoseGonz", "1234", "foto2.jpg", "Calle Cavanilles 456", "555-5678", "alumno", true);
 let alumnoPedro = new usuario(3, "Pedro", "Rodríguez", "peporro", "1234", "foto3.jpg", "Calle Espeñetas 789", "555-9012", "alumno", true);
 
+
+const mysql = require('mysql2');
+
+
+//Creo mi función crea usuarios que recibe como parametro de entrada el construcor usuario
+function crearUsuario(usuario) {
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'usuario',
+    password: 'contraseña',
+    database: 'basededatos'
+  });
+
+  connection.query(
+    'INSERT INTO usuarios (id, nombre, apellidos, usuario, contraseña, foto, direccion, telefono, tipo_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    usuario.toArray(),
+    (error, results) => {
+      if (error) throw error;
+      console.log('Usuario creado');
+    }
+  );
+
+  connection.end();
+}
+
+
+
+
+
+
+
+
+
 //creo mi array 
 let usuariosArray =[];
 
@@ -43,170 +76,6 @@ console.log(usuariosArray);
 for (let contador = 0; contador < usuariosArray.length; contador++) {
   console.log(usuariosArray[contador]);
 }
-
-/* Vamos a powershell 
-
-Hay que tener instalado node primero
-1. -> npm install -g typescript // npm install --save-dev typescript //Instalamos
-2. -> npm init //iniciamos.
-3. -> tsc -v // comprobar version.
-
-Ya  tenemos listo typeScript
-
-
-EJEMPLO ARRAY
-{
-"arrayname":[{
-"nombrecolor":"rojo",
-"+datos":"datos",
-"+datos":"datos"
-"
-},
-"nombrecolor":"rojo",
-"+datos":"datos",
-"+datos":"datos"
-"},
-"nombrecolor":"rojo",
-"+datos":"datos",
-"+datos":"datos"
-"}
-}
-}
-
-// PRIMER INTENTO Y PLANTILLA PARA DATOS //
-{
-"usuariosArray":[
-  {
-    "nombre":"",
-    "apellidos":"",
-    "usuario":"",
-    "contraseña":"",
-    "foto":"",
-    "direccion":"",
-    "telefono":"",
-    "tipo_usuario":"",
-    "activo":""
-]
-  }
-}
-
-//////// DATOS PARA TYPESCRIPT FUNCIONA ///////////
-const usuariosArray = [
-  {
-    "nombre":"Adrian",
-    "apellidos":"Sánchez",
-    "usuario": "adri",
-    "contraseña": 1234,
-    "foto": "foto1.jpg",
-    "direccion": "Calle Alicante, Nº1",
-    "telefono": 677222555,
-    "tipo_usuario": "alumno",
-    "activo": true
-  },
-  {
-    "nombre": "Jose",
-    "apellidos": "Sanchez",
-    "usuario": "schema",
-    "contraseña": 1234,
-    "foto": "foto2.jpg",
-    "direccion": "Calle Cavanilles, Nº1",
-    "telefono": 617252555,
-    "tipo_usuario": "alumno",
-    "activo": true
-  }
-];
-
-//AHORA VAMOS A HACER CONSTRUCTOR//
-
-interface Usuario  {
-  name: string;
-  apellidos: string;
-  usuario: string;
-  contraseña: string;
-  foto: string;
-  direccion: string;
-  telefono: number[];
-  tipo_usuario: string;
-  activo: boolean;
-}
-
-let alumnoAdrian: Usuario = {
-  name: "Adrián",
-  apellidos: "Sánchez Martínez",
-  usuario: "adri",
-  contraseña: "1234",
-  foto: "foto1.png",
-  direccion: "Calle Alicante, Nº1",
-  telefono: [677225159],
-  tipo_usuario: "alumnos",
-  activo: true
-};
-
-let alumnoJose: Usuario = {
-  name: "Jose",
-  apellidos: "González García",
-  usuario: "JoseGonz",
-  contraseña: "1234",
-  foto: "foto2.png",
-  direccion: "Calle Cavanilles 456",
-  telefono: [5555678],
-  tipo_usuario: "alumnos",
-  activo: true
-};
-
-let alumnoJuan: Usuario = {
-  name: "Juan",
-  apellidos: "Pérez Fernández",
-  usuario: "juanpf",
-  contraseña: "1234",
-  foto: "foto3.png",
-  direccion: "Calle Espeñetas 789",
-  telefono: [5559012],
-  tipo_usuario: "alumnos",
-  activo: true
-}
-};
-
-
-
-
-
-
-*/
-
-
-
-"Adrián", "Sánchez", "adri", "1234", "foto1.jpg", "Calle Alicante, Nº1", "677222555", "alumno", true
-
-this.id = id;
-this.nombre = nombre;
-this.apellidos = apellidos;
-this.usuario = usuario;
-this.contraseña = contraseña;
-this.foto = foto;
-this.direccion = direccion;
-this.telefono = telefono;
-this.tipo_usuario = tipo_usuario;
-this.activo = activo;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Vamos a crear infoAlumno pasandole (alumno) como una variable para renombrar
 class infoalumno {
@@ -266,3 +135,13 @@ console.log(informacionAlumnoAdrian.activo);
     }
   }
 
+
+  /* Vamos a powershell 
+
+Hay que tener instalado node primero
+1. -> npm install -g typescript // npm install --save-dev typescript //Instalamos
+2. -> npm init //iniciamos.
+3. -> tsc -v // comprobar version.
+
+Ya  tenemos listo typeScript
+*/ 
