@@ -1,11 +1,11 @@
-DROP DATABASE IF EXISTS FULLSTACKWEB;
-CREATE DATABASE IF NOT EXISTS FULLSTACKWEB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS FULLSTACK;
 
-ENGINE=InnoDB Character set 'utf8' default COLLATE 'utf8_general_ci';
+CREATE DATABASE IF NOT EXISTS FULLSTACK DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 
 /* usamos la base de datos*/
 
-USE FULLSTACKWEB;
+USE FULLSTACK;
 
 /* Creamos primero los tipos de usuario*/
 DROP TABLE IF EXISTS TIPOS_USUARIO;
@@ -89,7 +89,7 @@ DELETE FROM USUARIOS;
     ("profesorado","este susodicho especimen denominado como profesor, suele tener la intención de suspender a todo el curso haciendo lo máximo posible por ello");
 
     INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
-    ("José","25448855-F","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
+    ("Jose","25448855-F","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
 
     INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
     ("Adrián","2538445-S","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
@@ -278,11 +278,14 @@ FROM USUARIOS,ASIGNATURAS,CURSOS,NOTAS
 WHERE notas.id_asignatura = asignaturas.id AND CURSOS.id=NOTAS.id_curso
 GROUP BY ASIGNATURAS.nombre;
 
-select * from View01infoAlumno;
+    select * from View01infoAlumno;
 
-select * from View01infoAlumno;
+    select * from View01infoAlumno;
 
-/* FIN DEL CÓDIGO*/
+/* AHORA TENGO MI DELETE FUNCIONAL
 
 DELETE FROM NOTAS WHERE id_alumno = (SELECT Usuarios.id FROM USUARIOS WHERE nombre LIKE 'Jose');
+*/
+
+
 
