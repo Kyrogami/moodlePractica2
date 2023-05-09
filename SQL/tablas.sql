@@ -233,16 +233,10 @@ DESCRIBE CURSOS;
 DESCRIBE TIPOS_USUARIO;
 
 
-/* CONSULTA QUE UN ALUMNO VEA SU CURSO,ASIGNATURA Y NOTA */
-
+/* BÁSICA */
 
 SELECT CURSOS.nombre
 FROM CURSOS;
-
-SELECT USUARIOS.nombre,ASIGNATURAS.nombre
-FROM USUARIOS.id=ASIGNATURAS.id_profesor;
-
-
 
 /* CONSULTA QUE MUESTRA nombre de curso y nombre de asignaturas */
 
@@ -250,9 +244,6 @@ SELECT CURSOS.nombre AS 'Curso 2023',CURSOS.id_a1,ASIGNATURAS.nombre 'Asignatura
 FROM CURSOS, ASIGNATURAS, USUARIOS
 WHERE ASIGNATURAS.id = CURSOS.id AND CURSOS.nombre LIKE 'FUL%';
 
-SELECT CURSOS.nombre AS 'Curso 2023',CURSOS.id_a1,ASIGNATURAS.nombre 'Asignaturas'
-FROM CURSOS, ASIGNATURAS, USUARIOS
-WHERE ASIGNATURAS.id = CURSOS.id AND CURSOS.nombre LIKE 'FUL%' AND ASIGNATURAS.nombre LIKE 'JS';
 
 SELECT COUNT(Cursos.nombre)
 FROM CURSOS;
@@ -270,8 +261,8 @@ GROUP BY ASIGNATURAS.nombre;
 
 /* CONSULTA CURSOS NOMBRE ASIGNATURA NOMBRE y NOTAS.nota*/
 
-DROP VIEW IF EXISTS infoAlumno;
-CREATE VIEW IF NOT EXISTS infoAlumno AS
+DROP VIEW IF EXISTS View01infoAlumno;
+CREATE VIEW IF NOT EXISTS View01infoAlumno AS
 SELECT CURSOS.nombre AS 'Curso-2023',ASIGNATURAS.nombre AS Asignaturas, NOTAS.nota 
 FROM ASIGNATURAS,NOTAS,CURSOS
 WHERE notas.id_asignatura = asignaturas.id AND CURSOS.id=NOTAS.id_curso
@@ -282,42 +273,17 @@ GROUP BY ASIGNATURAS.nombre
 SELECT usuarios.nombre as Alumno
 FROM USUARIOS;
 
+/* consulta info alumno */
+DROP VIEW IF EXISTS View02PongoNotas;
 
-DROP VIEW IF EXISTS infoAlumno;
-
-CREATE VIEW IF NOT EXISTS infoAlumno AS
+CREATE VIEW IF NOT EXISTS View02PongoNotas AS
 SELECT USUARIOS.nombre as Alumno,ASIGNATURAS.nombre AS Asignaturas,NOTAS.nota
 FROM USUARIOS,ASIGNATURAS,CURSOS,NOTAS
 WHERE notas.id_asignatura = asignaturas.id AND CURSOS.id=NOTAS.id_curso
 GROUP BY ASIGNATURAS.nombre;
 
+select * from pongoNotas;
 
-
-
-
-
-
-
-
+select * from infoAlumno;
 
 /* FIN DEL CÓDIGO*/
-
-
-
-
-
-
-
-
-
-
-
-
-SELECT CURSOS.nombre AS curso, ASIGNATURAS.nombre AS asignatura, NOTAS.nota
-FROM USUARIOS,
-JOIN CURSOS ON USUARIOS.id = CURSOS.id_alumno
-JOIN ASIGNATURAS ON ASIGNATURAS.id = CURSOS.id_asignatura
-JOIN NOTAS ON NOTAS.id_alumno = USUARIOS.id AND NOTAS.id_asignatura = ASIGNATURAS.id;
-
-
-WHERE USUARIOS.id = 1;
