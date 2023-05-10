@@ -49,14 +49,14 @@ CREATE TABLE IF NOT EXISTS ASIGNATURAS(
     CREATE TABLE IF NOT EXISTS CURSOS(
         id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
         nombre VARCHAR(255) NOT NULL,
-        id_a1 int,
-        id_a2 int,
-        id_a3 int,
-        id_a4 int,
-        id_a5 int,    
-        id_a6 int,
-        id_a7 int,
-        id_a8 int,
+        id_a1 int DEFAULT 0,
+        id_a2 int  DEFAULT 0,
+        id_a3 int  DEFAULT 0,
+        id_a4 int  DEFAULT 0,
+        id_a5 int  DEFAULT 0,    
+        id_a6 int  DEFAULT 0,
+        id_a7 int  DEFAULT 0,
+        id_a8 int  DEFAULT 0,
         FOREIGN KEY (id_a1) REFERENCES ASIGNATURAS (id),
         FOREIGN KEY (id_a2) REFERENCES ASIGNATURAS (id),
         FOREIGN KEY (id_a3) REFERENCES ASIGNATURAS (id),
@@ -97,9 +97,9 @@ DELETE FROM USUARIOS;
     ("Ana","7538445-S","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1);
 
     INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
-    ("María Cristina","1222445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0),
+    ("MaryCris","1222445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0),
     ("Miguel","1226445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
-    ("Juan Carlos","1826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
+    ("Juanka","1826445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
     ("Victoría","1826945-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,0);
     INSERT INTO USUARIOS(nombre,dni,apellidos,usuario,contraseña,direccion,telefono,tipo_usuario,activo) VALUES
     ("Cristían","2824445-D","Gonzalez Pérez","pegope","1234","Calle de la Inquisición",697123963,1,1),
