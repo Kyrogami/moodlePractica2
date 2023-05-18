@@ -25,3 +25,4 @@
     WHERE id_profesor1 IN (SELECT id 
                            FROM usuarios 
                            WHERE nombre LIKE 'Jorge')
+

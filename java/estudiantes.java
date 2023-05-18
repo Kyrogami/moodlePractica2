@@ -1,4 +1,5 @@
-package java;
+package zEscuela;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -76,6 +77,8 @@ public class estudiantes {
                 PreparedStatement ps4 = conexion.prepareStatement("DELETE FROM usuarios WHERE nombre = ?");
                 ps4.setString(1, nombre);
                 int filasAfectadasUsuarios = ps4.executeUpdate();
+                
+                //COMPROBAMOS ERRORES para saber si alumno es borrado y un mensaje en casod e que no
                 if (filasAfectadasUsuarios > 0) {
                     System.out.println("El alumno ha sido borrado correctamente.");
                 } else {
@@ -93,4 +96,34 @@ public class estudiantes {
                 }
             }
         }
-    }}
+        
+        // método EDITAR alumno
+        public void editarAlumno() {
+        	 Connection conexion = null;
+             try {
+                 conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/fullstack", "workbench", "1234");
+                 
+         		String consulta = "UPDATE USUARIOS SET nombre = ? WHERE id = ?";
+    			PreparedStatement ps3 = conexion.prepareStatement(consulta);
+    			ps3.setString(1, "Nuevo nombre");
+    			ps3.setInt(1, 2); // Suponiendo que el id del usuario a actualizar es 1
+    			//COMPROBAMOS ERRORES para saber si alumno es borrado y un mensaje en casod e que no
+    		            	
+             } catch (SQLException e) {
+                 e.printStackTrace();
+             } finally {
+                 if (conexion != null) {
+                     try {
+                         conexion.close();
+                     } catch (SQLException e) {
+                         e.printStackTrace();
+                     }
+                 }
+             }
+         }
+         
+    			
+    }
+}
+        
+
